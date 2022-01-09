@@ -1,0 +1,126 @@
+﻿@model Product
+<div class="single-product-area section-padding-100 clearfix">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-50">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Furniture</a></li>
+                        <li class="breadcrumb-item"><a href="#">Chairs</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">white modern chair</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                @if (Model.ProductPictures.Any())
+                {
+                    int ppIndexB = 0;
+                    int ppIndexK = 0;
+                    <div class="single_product_thumb">
+                        <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+
+                                @foreach (ProductPicture pp in Model.ProductPictures)
+                                {
+                                <li @(ppIndexB==0?"class=active":"") data-target="#product_details_slider" data-slide-to="1" style="background-image: url(@pp.PicturePath);">
+                                </li>
+
+                                    ppIndexB++;
+                                }
+                              
+                            </ol>
+                          
+                            <div class="carousel-inner">
+
+                                @foreach (ProductPicture pp in Model.ProductPictures)
+                                {
+                                    <div class="carousel-item @(ppIndexK==0?"active":"")">
+                                        <a class="gallery_img" href="@pp.PicturePath">
+                                            <img class="d-block w-100" src="@pp.PicturePath" alt="@Model.Name">
+                                        </a>
+                                    </div>
+
+                                    ppIndexK++;
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="single_product_desc">
+                    <!-- Product Meta Data -->
+                    <div class="product-meta-data">
+                        <div class="line"></div>
+                        <p class="product-price">@Model.Price TL</p>
+                        <a href="product-details.html">
+                            <h6>@Model.Name</h6>
+                        </a>
+                        <!-- Ratings & Review -->
+                        <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="review">
+                                <a href="#">Write A Review</a>
+                            </div>
+                        </div>
+                        <!-- Avaiable -->
+                        <p class="avaibility"><i class="fa fa-circle"></i> In Stock</p>
+                    </div>
+
+                    <div class="short_overview my-5">
+                        @Html.Raw(Model.Detail)
+                    </div>
+
+
+                    <div class="cart clearfix">
+
+                        <div class="cart-btn d-flex mb-50">
+                            <p>ÜRÜN MİKTARI</p>
+                            <div class="quantity">
+                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
+                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        <button onclick="addCart()" disabled style="background-color:darkslateblue" name="addtocart" value="5" class="btn amado-btn">SEPETE EKLE</button>
+                        
+                            
+
+                       
+                    </div>
+                    <!-- Add to Cart Form -->
+                    @*<form class="cart clearfix" method="post">
+            <div class="cart-btn d-flex mb-50">
+                <p>ÜRÜN MİKTARI</p>
+                <div class="quantity">
+                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
+                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
+                </div>
+            </div>
+            <button type="button" name="addtocart" value="5" class="btn amado-btn">SEPETE EKLE</button>
+            <div>
+                <button type="button" name="gotocart" value="5" class="btn amado-btn amado-btn-group mt-30 mb-100">ALIŞVERİSİ TAMAMLA</button>
+
+            </div>
+        </form>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
