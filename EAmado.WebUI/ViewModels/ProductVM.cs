@@ -8,7 +8,7 @@ namespace EAmado.WebUI.ViewModels
 {
     public class ProductVM
     {
-        public IEnumerable<Product> Products{ get; set; }
+        public Product Products{ get; set; }
 
         public IEnumerable<Product> ProductPicture2 { get; set; }
     }

@@ -117,10 +117,26 @@
     });
 
 
+ 
 
 
 })(jQuery);
 
-function addCart() {
-    alert('deneme');
-}
+function addCart(ID) {
+    var quantity = $(".quantity input[type=number]").val();
+    $.ajax({
+        type: "POST",
+        url: "/sepet/ekle",
+        data: { "productID": ID, "quantity": quantity },
+        success: function (data) {
+            alert(data);
+        },
+        error: function (error) {
+            alert(error.responseText)
+        }
+
+
+    });
+    //var v = $(".quantity input[type=number]").val();
+    //$(".cart-nav span").text(v);
+};

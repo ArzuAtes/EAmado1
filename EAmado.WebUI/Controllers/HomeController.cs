@@ -21,6 +21,7 @@ namespace EAmado.WebUI.Controllers
         }
         public IActionResult Index()
         {
+
             IndexVM indexVM = new IndexVM
             {
                 HomePages = repoHomepage.GetAll()

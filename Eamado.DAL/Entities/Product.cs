@@ -25,6 +25,8 @@ namespace Eamado.DAL.Entities
         [Display(Name ="Görüntülenme Sayısı")]
         public int DisplayIdex { get; set; }
 
+        [Column(TypeName = "decimal(18,0)"), Display(Name = "Stok Sayısı")]
+        public decimal Stok { get; set; }
         public ICollection<ProductPicture> ProductPictures { get; set; }
 
 
